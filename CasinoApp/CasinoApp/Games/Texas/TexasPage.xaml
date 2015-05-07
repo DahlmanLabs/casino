@@ -1,0 +1,181 @@
+﻿<common:LayoutAwarePage
+    x:Name="pageRoot"
+    x:Class="LocalCasino.Games.Texas.TexasPage"
+    DataContext="{Binding DefaultViewModel, RelativeSource={RelativeSource Self}}"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:LocalCasino.Games.Texas"
+    xmlns:common="using:LocalCasino.Common"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" Loaded="PageLoaded">
+
+    <Page.Resources>
+
+        <!-- TODO: Delete this line if the key AppName is declared in App.xaml -->
+        <x:String x:Key="PageName">Texas Hold'em</x:String>
+    </Page.Resources>
+
+    <!--
+        This grid acts as a root panel for the page that defines two rows:
+        * Row 0 contains the back button and page title
+        * Row 1 contains the rest of the page layout
+    -->
+    <Grid x:Name="GridMain" Style="{StaticResource LayoutRootStyle}" Background="#FF0B3809" Margin="0,21,0,-21">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="140"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Back button and page title -->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="BackButton" Click="GoBack" IsEnabled="{Binding Frame.CanGoBack, ElementName=pageRoot}" Style="{StaticResource BackButtonStyle}"/>
+            <TextBlock x:Name="PageTitle" Grid.Column="1" Text="{StaticResource PageName}" Style="{StaticResource PageHeaderTextStyle}"/>
+        </Grid>
+        <Ellipse x:Name="EllipseDealer" Height="217" Margin="312,98,305,0" Stroke="White" VerticalAlignment="Top" StrokeThickness="3" Grid.RowSpan="2">
+            <Ellipse.Fill>
+                <SolidColorBrush Color="#FFF4F4F5" Opacity="0.10000000149011612"/>
+            </Ellipse.Fill>
+        </Ellipse>
+        <Image x:Name="DealerCard1" HorizontalAlignment="Left" Height="100" Margin="480,18,0,0" Grid.Row="1" VerticalAlignment="Top" Width="70" Source="ms-appx:///Assets/temp/Cards/Spades/spades_14.png" Stretch="UniformToFill"/>
+        <Image x:Name="DealerCard5" HorizontalAlignment="Left" Height="100" Margin="815,18,0,0" Grid.Row="1" VerticalAlignment="Top" Width="70" Source="ms-appx:///Assets/temp/Cards/backside.png" Stretch="UniformToFill"/>
+        <Image x:Name="DealerCard4" HorizontalAlignment="Left" Height="100" Margin="725,18,0,0" Grid.Row="1" VerticalAlignment="Top" Width="70" Source="ms-appx:///Assets/temp/Cards/backside.png" Stretch="UniformToFill"/>
+        <Image x:Name="DealerCard3" HorizontalAlignment="Left" Height="100" Margin="630,18,0,0" Grid.Row="1" VerticalAlignment="Top" Width="70" Source="ms-appx:///Assets/temp/Cards/Spades/spades_14.png" Stretch="UniformToFill"/>
+        <Image x:Name="DealerCard2" HorizontalAlignment="Left" Height="100" Margin="555,18,0,0" Grid.Row="1" VerticalAlignment="Top" Width="70" Source="ms-appx:///Assets/temp/Cards/Spades/spades_14.png" Stretch="UniformToFill"/>
+        <TextBlock x:Name="TextCurrentPlayer" Margin="0,114,28,0" TextWrapping="Wrap" Text="Current Player: 1" VerticalAlignment="Top" HorizontalAlignment="Right" Width="170"/>
+        <HyperlinkButton x:Name="ButtonNext" Content="Dealer Do" HorizontalAlignment="Right" Height="39" Margin="0,139,54,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="152" Click="ButtonNextPlayerClick"/>
+
+        <Border BorderBrush="White" BorderThickness="3" HorizontalAlignment="Left" Margin="440,0,0,50" Grid.Row="1" Width="457" CornerRadius="10" Height="340" VerticalAlignment="Bottom">
+            <Grid>
+                <Image x:Name="PlayerCard1" Margin="10,126,0,0" Source="ms-appx:///Assets/temp/Cards/Spades/spades_14.png" Stretch="None" Height="185" VerticalAlignment="Top" HorizontalAlignment="Left" Width="130"/>
+                <Image x:Name="PlayerCard2" Margin="150,126,0,0" Source="ms-appx:///Assets/temp/Cards/Spades/spades_13.png" Stretch="None" Height="185" VerticalAlignment="Top" HorizontalAlignment="Left" Width="130"/>
+                <Border x:Name="RectBetting" Margin="0,21,17,0" Height="90" VerticalAlignment="Top" BorderBrush="White" BorderThickness="3" CornerRadius="10" HorizontalAlignment="Right" Width="265">
+                    <Grid x:Name="GridBets">
+                        <Grid.Background>
+                            <SolidColorBrush Color="White" Opacity="0.1"/>
+                        </Grid.Background>
+                        <TextBlock x:Name="TextPlaceBetsHere" HorizontalAlignment="Left"  TextWrapping="NoWrap" Text="Place bets here" Height="13" VerticalAlignment="Bottom" FontSize="12" Margin="5,0,0,5"/>
+                        <TextBlock x:Name="TextTotalBets" HorizontalAlignment="Right"  TextWrapping="NoWrap" Text="Bet: $0000" Height="13" VerticalAlignment="Bottom" FontSize="12" Margin="0,0,5,5" FontFamily="Global User Interface"/>
+                        <Button x:Name="ButtonDone" Content="Bet" HorizontalAlignment="Right" Margin="0,5,5,0" VerticalAlignment="Top" Height="50" Width="71" IsEnabled="False" Click="ButtonBetClick"/>
+                    </Grid>
+
+
+                </Border>
+                <Image HorizontalAlignment="Left" Margin="298,135,0,0" x:Name="ImageRed" Width="61" Source="ms-appx:///Assets/temp/Chips/chips_red.png" Stretch="UniformToFill" Height="61" VerticalAlignment="Top" Canvas.ZIndex="10" Tapped="ImgRedTapped"/>
+                <Image HorizontalAlignment="Left" Margin="372,135,0,0" x:Name="ImageBlue" Width="61" Source="ms-appx:///Assets/temp/Chips/chips_blue.png" Stretch="UniformToFill" Height="61" VerticalAlignment="Top" Canvas.ZIndex="10" Tapped="ImgBlueTapped" />
+                <Image HorizontalAlignment="Left" Margin="298,227,0,0" Width="61" x:Name="ImageGreen" Source="ms-appx:///Assets/temp/Chips/chips_green.png" Stretch="UniformToFill" Height="61" VerticalAlignment="Top"  ManipulationMode="TranslateX,TranslateY" Canvas.ZIndex="10" Tapped="ImgGreenTapped" />
+                <Image HorizontalAlignment="Left" Margin="372,227,0,0" Width="61" x:Name="imageBlack" Source="ms-appx:///Assets/temp/Chips/chips_black.png" Stretch="UniformToFill" Height="61" VerticalAlignment="Top"  ManipulationMode="TranslateX,TranslateY" Canvas.ZIndex="10" Tapped="ImgBlackTapped" />
+                <TextBlock x:Name="TextGreen" HorizontalAlignment="Left" Margin="298,293,0,0" TextWrapping="Wrap" Text="$250" Height="13" VerticalAlignment="Top" FontSize="12"/>
+                <TextBlock x:Name="TextBlue" HorizontalAlignment="Left" Margin="372,199,0,0" TextWrapping="Wrap" Text="$100" Height="13" VerticalAlignment="Top" FontSize="12"/>
+                <TextBlock x:Name="TextRed" HorizontalAlignment="Left" Margin="298,199,0,0" TextWrapping="Wrap" Text="$50" Height="13" VerticalAlignment="Top" FontSize="12"/>
+                <TextBlock x:Name="TextBlack" HorizontalAlignment="Left" Margin="372,293,0,0" TextWrapping="Wrap" Text="$1000" Height="13" VerticalAlignment="Top" FontSize="12"/>
+                <TextBlock x:Name="TextTotalMarkers" HorizontalAlignment="Left" Margin="298,310,0,0" TextWrapping="Wrap" Text="Player 0: $000" RenderTransformOrigin="0.5,0.5" Height="13" VerticalAlignment="Top"/>
+                <Button x:Name="ButtonCheck" Content="Check" HorizontalAlignment="Left" Margin="18,19,0,0" VerticalAlignment="Top" Click="ButtonCheckClick"/>
+                <Button x:Name="ButtonFold" Content="Fold" HorizontalAlignment="Left" Margin="18,62,0,0" VerticalAlignment="Top" Width="75" Click="ButtonFoldClick"/>
+            </Grid>
+        </Border>
+        <Border x:Name="GridCpu2" BorderBrush="White" BorderThickness="3" Height="200" Margin="10,161,0,0" Grid.Row="1" VerticalAlignment="Top" Width="160" HorizontalAlignment="Left" CornerRadius="10">
+
+            <Grid x:Name="GridPlayer2">
+                <Image x:Name="Cpu2Card1" HorizontalAlignment="Left" Height="100" Margin="58,0,0,0" VerticalAlignment="Top" Width="70" Source="ms-appx:///Assets/temp/Cards/backside.png" Stretch="UniformToFill" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
+                    <Image.RenderTransform>
+                        <CompositeTransform Rotation="90"/>
+                    </Image.RenderTransform>
+                </Image>
+                <Image x:Name="Cpu2Card2" HorizontalAlignment="Left" Height="100" Margin="58,87,0,0" VerticalAlignment="Top" Width="70" Source="ms-appx:///Assets/temp/Cards/backside.png" Stretch="UniformToFill" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" Grid.RowSpan="2">
+                    <Image.RenderTransform>
+                        <CompositeTransform Rotation="90"/>
+                    </Image.RenderTransform>
+                </Image>
+
+                <TextBlock x:Name="TextPlayer2" TextWrapping="Wrap" Text="Player 2: $000" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" Height="13" VerticalAlignment="Top" Margin="-40.5,87.5,0,0" HorizontalAlignment="Left" Width="144.327">
+                    <TextBlock.RenderTransform>
+                        <CompositeTransform Rotation="90"/>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+                <TextBlock x:Name="TextPlayer2Bet" Text="Bet: $000" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" Margin="-52.5,83.5,0,0" HorizontalAlignment="Left" Height="13" VerticalAlignment="Top" TextWrapping="Wrap" Width="137.903">
+                    <TextBlock.RenderTransform>
+                        <CompositeTransform Rotation="90"/>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+            </Grid>
+
+        </Border>
+        <Border x:Name="GridCpu1" BorderBrush="White" BorderThickness="3" HorizontalAlignment="Left" Margin="150,0,0,50" Grid.Row="1" Width="200" CornerRadius="10" Height="160" VerticalAlignment="Bottom">
+            <Grid x:Name="GridPlayer1">
+                <Image x:Name="Cpu1Card1" HorizontalAlignment="Left" Width="70" Source="ms-appx:///Assets/temp/Cards/backside.png" Stretch="UniformToFill" Height="100" VerticalAlignment="Bottom" Margin="10,0,0,44"/>
+                <Image x:Name="Cpu1Card2" HorizontalAlignment="Left" Margin="95,0,0,44" Width="70" Source="ms-appx:///Assets/temp/Cards/backside.png" Stretch="UniformToFill" Height="100" VerticalAlignment="Bottom"/>
+                <TextBlock x:Name="TextPlayer1" HorizontalAlignment="Left" Margin="13,0,0,26" TextWrapping="Wrap" Text="Player 1: $000" Height="13" VerticalAlignment="Bottom" />
+                <TextBlock x:Name="TextPlayer1Bet" HorizontalAlignment="Left" Margin="13,0,0,13" TextWrapping="Wrap" Text="Bet: $000" Height="13" VerticalAlignment="Bottom" />
+            </Grid>
+        </Border>
+        <Border x:Name="GridCpu4" BorderBrush="White" BorderThickness="3" HorizontalAlignment="Right" Margin="0,0,179,50" Grid.Row="1" Width="200" CornerRadius="10" Height="160" VerticalAlignment="Bottom">
+            <Grid x:Name="GridPlayer4">
+                <Image x:Name="Cpu4Card1" Margin="10,0,0,44" Source="ms-appx:///Assets/temp/Cards/backside.png" Stretch="UniformToFill" Height="100" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="70"/>
+                <Image x:Name="Cpu4Card2" Margin="95,0,0,44" Source="ms-appx:///Assets/temp/Cards/backside.png" Stretch="UniformToFill" Height="100" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="70"/>
+                <TextBlock x:Name="TextPlayer4" Margin="13,0,0,26" TextWrapping="Wrap" Text="Player 4: $000" Height="13" VerticalAlignment="Bottom" HorizontalAlignment="Left" />
+                <TextBlock x:Name="TextPlayer4Bet" Margin="13,0,0,13" TextWrapping="Wrap" Text="Bet: $000" Height="13" VerticalAlignment="Bottom" HorizontalAlignment="Left" />
+            </Grid>
+        </Border>
+        <Border x:Name="GridCpu3" BorderBrush="White" BorderThickness="3" HorizontalAlignment="Right" Height="200" Margin="0,160,20,0" Grid.Row="1" VerticalAlignment="Top" Width="160" CornerRadius="10">
+            <Grid x:Name="GridPlayer3">
+                <Image x:Name="Cpu3Card1"  Height="100" Margin="0,0,58,0" VerticalAlignment="Top" Source="ms-appx:///Assets/temp/Cards/backside.png" Stretch="UniformToFill" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" HorizontalAlignment="Right" Width="70">
+                    <Image.RenderTransform>
+                        <CompositeTransform Rotation="90"/>
+                    </Image.RenderTransform>
+                </Image>
+                <Image  x:Name="Cpu3Card2" Height="100" Margin="0,87,58,0" VerticalAlignment="Top" Source="ms-appx:///Assets/temp/Cards/backside.png" Stretch="UniformToFill" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" HorizontalAlignment="Right" Width="70">
+                    <Image.RenderTransform>
+                        <CompositeTransform Rotation="90"/>
+                    </Image.RenderTransform>
+                </Image>
+                <TextBlock x:Name="TextPlayer3" Margin="0,86.5,-41.5,0" TextWrapping="Wrap" Text="Player 3: $000" Height="13" VerticalAlignment="Top" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" Width="146.327">
+                    <TextBlock.RenderTransform>
+                        <CompositeTransform Rotation="-90"/>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+                <TextBlock x:Name="TextPlayer3Bet" Margin="0,88,-56,0" TextWrapping="Wrap" Text="Bet: $000" Height="13" VerticalAlignment="Top" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" Width="144.903">
+                    <TextBlock.RenderTransform>
+                        <CompositeTransform Rotation="-90"/>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+            </Grid>
+        </Border>
+        <TextBlock x:Name="TextCurrentPot" Margin="628,131,623,0" Grid.Row="1" TextWrapping="Wrap" Text="Total: $0000" VerticalAlignment="Top"/>
+
+
+        <VisualStateManager.VisualStateGroups>
+
+            <!-- Visual states reflect the application's view state -->
+            <VisualStateGroup x:Name="ApplicationViewStates">
+                <VisualState x:Name="FullScreenLandscape"/>
+                <VisualState x:Name="Filled"/>
+
+                <!-- The entire page respects the narrower 100-pixel margin convention for portrait -->
+                <VisualState x:Name="FullScreenPortrait">
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="BackButton" Storyboard.TargetProperty="Style">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PortraitBackButtonStyle}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+
+                <!-- The back button and title have different styles when snapped -->
+                <VisualState x:Name="Snapped">
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="BackButton" Storyboard.TargetProperty="Style">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SnappedBackButtonStyle}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PageTitle" Storyboard.TargetProperty="Style">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SnappedPageHeaderTextStyle}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+    </Grid>
+</common:LayoutAwarePage>

@@ -1,0 +1,259 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A24E987A-A4E9-415E-A6DE-5318504B7F32}</ProjectGuid>
+    <OutputType>AppContainerExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LocalCasino</RootNamespace>
+    <AssemblyName>LocalCasino</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{BC8A1FFA-BEE3-4634-8014-F334798102B3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <PackageCertificateKeyFile>CasinoApp_TemporaryKey.pfx</PackageCertificateKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <OutputPath>bin\ARM\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\ImageHelper.cs" />
+    <Compile Include="Games\Texas\TexasPage.xaml.cs">
+      <DependentUpon>TexasPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\GroupedGamesMainPage.xaml.cs">
+      <DependentUpon>GroupedGamesMainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\GroupDetailPage.xaml.cs">
+      <DependentUpon>GroupDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\GameDetailPage.xaml.cs">
+      <DependentUpon>GameDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Data\MenuDataSource.cs" />
+    <Compile Include="Common\BindableBase.cs" />
+    <Compile Include="Common\BooleanToVisibilityConverter.cs" />
+    <Compile Include="Common\BooleanNegationConverter.cs" />
+    <Compile Include="Common\LayoutAwarePage.cs" />
+    <Compile Include="Common\RichTextColumns.cs" />
+    <Compile Include="Common\SuspensionManager.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+    <None Include="Common\ReadMe.txt" />
+    <None Include="CasinoApp_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Logo.png" />
+    <Content Include="Assets\SmallLogo.png" />
+    <Content Include="Assets\SplashScreen.png" />
+    <Content Include="Assets\StoreLogo.png" />
+    <Content Include="Assets\LightGray.png" />
+    <Content Include="Assets\MediumGray.png" />
+    <Content Include="Assets\DarkGray.png" />
+    <Content Include="Assets\temp\Cards\backside.png" />
+    <Content Include="Assets\temp\Cards\Clubs\clubs_02.png" />
+    <Content Include="Assets\temp\Cards\Clubs\clubs_03.png" />
+    <Content Include="Assets\temp\Cards\Clubs\clubs_04.png" />
+    <Content Include="Assets\temp\Cards\Clubs\clubs_05.png" />
+    <Content Include="Assets\temp\Cards\Clubs\clubs_06.png" />
+    <Content Include="Assets\temp\Cards\Clubs\clubs_07.png" />
+    <Content Include="Assets\temp\Cards\Clubs\clubs_08.png" />
+    <Content Include="Assets\temp\Cards\Clubs\clubs_09.png" />
+    <Content Include="Assets\temp\Cards\Clubs\clubs_10.png" />
+    <Content Include="Assets\temp\Cards\Clubs\clubs_11.png" />
+    <Content Include="Assets\temp\Cards\Clubs\clubs_12.png" />
+    <Content Include="Assets\temp\Cards\Clubs\clubs_13.png" />
+    <Content Include="Assets\temp\Cards\Clubs\clubs_14.png" />
+    <Content Include="Assets\temp\Cards\Diamonds\diamonds_02.png" />
+    <Content Include="Assets\temp\Cards\Diamonds\diamonds_03.png" />
+    <Content Include="Assets\temp\Cards\Diamonds\diamonds_04.png" />
+    <Content Include="Assets\temp\Cards\Diamonds\diamonds_05.png" />
+    <Content Include="Assets\temp\Cards\Diamonds\diamonds_06.png" />
+    <Content Include="Assets\temp\Cards\Diamonds\diamonds_07.png" />
+    <Content Include="Assets\temp\Cards\Diamonds\diamonds_08.png" />
+    <Content Include="Assets\temp\Cards\Diamonds\diamonds_09.png" />
+    <Content Include="Assets\temp\Cards\Diamonds\diamonds_10.png" />
+    <Content Include="Assets\temp\Cards\Diamonds\diamonds_11.png" />
+    <Content Include="Assets\temp\Cards\Diamonds\diamonds_12.png" />
+    <Content Include="Assets\temp\Cards\Diamonds\diamonds_13.png" />
+    <Content Include="Assets\temp\Cards\Diamonds\diamonds_14.png" />
+    <Content Include="Assets\temp\Cards\Hearts\hearts_02.png" />
+    <Content Include="Assets\temp\Cards\Hearts\hearts_03.png" />
+    <Content Include="Assets\temp\Cards\Hearts\hearts_04.png" />
+    <Content Include="Assets\temp\Cards\Hearts\hearts_05.png" />
+    <Content Include="Assets\temp\Cards\Hearts\hearts_06.png" />
+    <Content Include="Assets\temp\Cards\Hearts\hearts_07.png" />
+    <Content Include="Assets\temp\Cards\Hearts\hearts_08.png" />
+    <Content Include="Assets\temp\Cards\Hearts\hearts_09.png" />
+    <Content Include="Assets\temp\Cards\Hearts\hearts_10.png" />
+    <Content Include="Assets\temp\Cards\Hearts\hearts_11.png" />
+    <Content Include="Assets\temp\Cards\Hearts\hearts_12.png" />
+    <Content Include="Assets\temp\Cards\Hearts\hearts_13.png" />
+    <Content Include="Assets\temp\Cards\Hearts\hearts_14.png" />
+    <Content Include="Assets\temp\Cards\Spades\spades_02.png" />
+    <Content Include="Assets\temp\Cards\Spades\spades_10.png" />
+    <Content Include="Assets\temp\Cards\Spades\spades_14.png" />
+    <Content Include="Assets\temp\Cards\Spades\spades_11.png" />
+    <Content Include="Assets\temp\Cards\Spades\spades_13.png" />
+    <Content Include="Assets\temp\Cards\Spades\spades_12.png" />
+    <Content Include="Assets\temp\Cards\Spades\spades_03.png" />
+    <Content Include="Assets\temp\Cards\Spades\spades_04.png" />
+    <Content Include="Assets\temp\Cards\Spades\spades_05.png" />
+    <Content Include="Assets\temp\Cards\Spades\spades_06.png" />
+    <Content Include="Assets\temp\Cards\Spades\spades_07.png" />
+    <Content Include="Assets\temp\Cards\Spades\spades_08.png" />
+    <Content Include="Assets\temp\Cards\Spades\spades_09.png" />
+    <Content Include="Assets\temp\casino-marker300x225.jpg" />
+    <Content Include="Assets\temp\casino_marker620x300.jpg" />
+    <Content Include="Assets\temp\Chips\chips_black.png" />
+    <Content Include="Assets\temp\Chips\chips_blue.png" />
+    <Content Include="Assets\temp\Chips\chips_green.png" />
+    <Content Include="Assets\temp\Chips\chips_orange.png" />
+    <Content Include="Assets\temp\Chips\chips_pink.png" />
+    <Content Include="Assets\temp\Chips\chips_red.png" />
+    <Content Include="Assets\temp\Chips\chips_white.png" />
+    <Content Include="Assets\temp\Chips\chips_yellow.png" />
+    <Content Include="Assets\temp\Poker-Chip150.jpg" />
+    <Content Include="Assets\temp\Poker-Chip24.jpg" />
+    <Content Include="Assets\temp\Poker-Chip30.jpg" />
+    <Content Include="Assets\temp\shutterstock-poker-hand-sq150.jpg" />
+    <Content Include="Assets\temp\shutterstock-poker-hand300x225.jpg" />
+    <Content Include="Docs\notes.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="Common\StandardStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Games\Texas\TexasPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\GroupedGamesMainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\GroupDetailPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\GameDetailPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CasinoLogic\LocalCasino.Common.csproj">
+      <Project>{0EC6C492-73DF-4394-A4D7-2C576685CA1F}</Project>
+      <Name>LocalCasino.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '11.0' ">
+    <VisualStudioVersion>11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

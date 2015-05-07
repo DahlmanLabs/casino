@@ -1,0 +1,58 @@
+﻿Local, potentially offline, Casino App for Windows 8
+Local Casino
+Private Casino
+Offline Casino
+
+Offline gaming
+Or closed network
+
+Card games as plugins (local and/or in-app purchase) possibly REST ability
+---------------------
+Texa Hold'en
+Omaha
+Black Jack
+Baccarat
+5 Card stud or what ever its called normal old-school poker
+
+Multiple users per computer and/or multiple profices per user
+- Like one user or profile per game
+- or user dedicated to exploration/learning
+- Default would be one user, the logged in user, with one profile with suggestions on when using more profiles.
+
+Users should be handed like plugins to, to support AI-players and local/network users the same way,
+with  future possibility for internat games (even thought thats probably unrealistic from a risk perspectice, but good when sold)
+
+We need:
+- Card images, Marker images, Dealer button etc
+- Table layout, will all games be played on a 10 person board, or will it adapt.
+- Card must be big/easy to read.
+- Genral Settings Charm, and possibly search to show up in search for Texas etc
+- Check Callisto framework for fly-out
+- Support Snap and Fill modes
+- Localizable?
+- Plug-in style alogos for different games and different difficulties, competing algos
+
+It must be:
+- Easy to place bets, raise, put stuff in right place in a real/tournament - like way
+- Must be easy to observe other players moves, with human like speed.
+
+
+
+Future Possibility for Dice games or wheel based games
+- These plugins might need different supporting functionality
+
+
+---------
+Register data source
+use automationproperies
+use style templates and like callisto flip or tilt on buttons
+
+windows 8 app samples. lots of samples
+
+Possible to wsitch to rest api for gaming AI
+
+HTTPSelfHost
+
+flurry framework, google analytics, buddy,
+market place test kit 
+marketplace framework?
